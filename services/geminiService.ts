@@ -164,9 +164,11 @@ export const generateContent = async (
   inputData: { url: string; title: string; sapo: string; body: string },
   config: EditorConfig
 ): Promise<string> => {
-  if (!import.meta.env.VITE_API_KEY) throw new Error("API Key is missing.");
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
-  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+  if (!API_KEY) throw new Error("API Key is missing.");
+
+const ai = new GoogleGenAI({ apiKey: API_KEY });
   
   let userPrompt = buildUserPrompt(inputData);
   userPrompt += `YÊU CẦU THỰC HIỆN (Chỉ tạo các phần được liệt kê dưới đây):\n`;
