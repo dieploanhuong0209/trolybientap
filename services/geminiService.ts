@@ -220,9 +220,11 @@ export const generateSingleSection = async (
   config: EditorConfig,
   sectionType: SectionType
 ): Promise<string> => {
-  if (!process.env.API_KEY) throw new Error("API Key is missing.");
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+if (!API_KEY) throw new Error("API Key is missing.");
+
+const ai = new GoogleGenAI({ apiKey: API_KEY });
   
   let userPrompt = buildUserPrompt(inputData);
 
