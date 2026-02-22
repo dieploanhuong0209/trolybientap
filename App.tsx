@@ -318,8 +318,11 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center space-x-2 bg-white/30 px-3 py-1.5 rounded-full border border-white/40">
-             <div className={`h-2 w-2 rounded-full ring-2 ring-white/60 ${process.env.API_KEY ? 'bg-emerald-400' : 'bg-[#db88a4]'}`} />
-             <span className="text-xs text-[#64748b] font-medium">{process.env.API_KEY ? 'System Ready' : 'Key Missing'}</span>
+             <div className={`h-2 w-2 rounded-full ring-2 ring-white/60 ${import.meta.env.VITE_API_KEY ? 'bg-emerald-400' : 'bg-[#db88a4]'}`} />
+
+      <span className="text-xs text-[#64748b] font-medium">
+{import.meta.env.VITE_API_KEY ? 'System Ready' : 'Key Missing'}
+</span>
           </div>
         </div>
       </header>
