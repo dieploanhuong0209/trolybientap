@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { EditorConfig, FormatType, GeneratedSection, SectionType } from './types';
-import { generateContent, generateSingleSection } from './services/geminiService';
+import { generateContent, generateSingleSection } from './services/geminiService.ts';
 import FormatSelector from './components/FormatSelector';
 import ConfigPanel from './components/ConfigPanel';
 import OutputBox from './components/OutputBox';
