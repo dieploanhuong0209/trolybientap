@@ -314,7 +314,7 @@ const App: React.FC = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-[#334155] tracking-tight font-serif">Trợ lý biên tập</h1>
-              <p className="text-[10px] text-[#64748b] font-medium tracking-widest uppercase">Trợ lý nội dung đa năng</p>
+              <p className="text-[10px] text-[#64748b] font-medium tracking-widest uppercase">Trợ lý nội dung đa nền tảng</p>
             </div>
           </div>
           <div className="flex items-center space-x-2 bg-white/30 px-3 py-1.5 rounded-full border border-white/40">
