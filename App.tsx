@@ -70,7 +70,6 @@ const App: React.FC = () => {
         const messages = [
             "Trợ lý đang biên tập...",
             "Hít vào... thở ra... đợi xíu nhé...",
-            "Đang pha một tách cà phê thơm lừng...",
             "Đang lục lọi kho từ vựng phong phú...",
             "Sắp xong rồi, đừng hối nha...",
             "Đang 'múa bút' tạo content xịn...",
