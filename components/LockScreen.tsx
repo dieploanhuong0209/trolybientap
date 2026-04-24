@@ -23,12 +23,13 @@ const LockScreen: React.FC<LockScreenProps> = ({ onSuccess }) => {
   return (
     <div 
       id="lock-screen-container"
-      className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-to-br from-[#a8c3d4] via-[#dbd6df] to-[#eec6c7] animate-in fade-in duration-700"
+      className="fixed inset-0 z-[10000] flex items-center justify-center bg-white"
     >
-      <div className="w-full max-w-sm px-6">
+      <div className="fixed inset-0 bg-gradient-to-br from-[#a8c3d4] via-[#dbd6df] to-[#eec6c7] opacity-100" />
+      <div className="relative w-full max-w-sm px-6">
         <div 
           id="password-box"
-          className={`bg-white/30 backdrop-blur-3xl border border-white/20 rounded-3xl p-8 shadow-xl text-center transform transition-all duration-500 ${error ? 'animate-shake' : ''}`}
+          className={`bg-white/40 backdrop-blur-3xl border border-white/30 rounded-3xl p-8 shadow-2xl text-center transform transition-all duration-500 ${error ? 'animate-shake' : ''}`}
         >
           <form onSubmit={handleSubmit} className="relative group max-w-[280px] mx-auto">
             <input
@@ -38,7 +39,7 @@ const LockScreen: React.FC<LockScreenProps> = ({ onSuccess }) => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="enter password"
               autoFocus
-              className={`w-full bg-white/40 border-none rounded-2xl py-3.5 pl-5 pr-14 focus:outline-none focus:ring-1 focus:ring-[#db88a4]/30 transition-all text-[#334155] placeholder:text-[#94a3b8]/50 placeholder:font-light placeholder:text-[13px] text-sm shadow-sm`}
+              className={`w-full bg-white/60 border border-white/20 rounded-2xl py-3.5 pl-5 pr-14 focus:outline-none focus:ring-1 focus:ring-[#db88a4]/50 transition-all text-[#334155] placeholder:text-[#94a3b8]/70 placeholder:font-light placeholder:text-[13px] text-sm shadow-sm`}
             />
             <button
               id="submit-password-btn"
@@ -50,8 +51,8 @@ const LockScreen: React.FC<LockScreenProps> = ({ onSuccess }) => {
           </form>
           
           <div className="mt-8">
-            <p className="text-[11px] text-[#64748b]/60 font-light tracking-wide">
-              contact <span className="text-[#db88a4]/70">Huong Diep</span> for the password
+            <p className="text-[11px] text-[#64748b]/80 font-light tracking-wide">
+              contact <span className="text-[#db88a4]/90 font-medium">Huong Diep</span> for the password
             </p>
           </div>
         </div>
