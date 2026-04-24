@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { EditorConfig, FormatType, GeneratedSection, SectionType } from './types';
-import { generateContent, generateSingleSection } from './services/geminiService.ts';
+import { generateContent, generateSingleSection } from './services/geminiService';
 import FormatSelector from './components/FormatSelector';
 import ConfigPanel from './components/ConfigPanel';
 import OutputBox from './components/OutputBox';
+import LockScreen from './components/LockScreen';
 import { Send, AlertCircle, RotateCcw, Feather, Link as LinkIcon, Hourglass, Square, Ban, AlertTriangle } from 'lucide-react';
 
 // Custom 5-Petal Flower Icon
@@ -30,6 +31,8 @@ const FivePetalFlower = ({ className }: { className?: string }) => (
 );
 
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
   const [url, setUrl] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [sapo, setSapo] = useState<string>('');
@@ -70,6 +73,7 @@ const App: React.FC = () => {
         const messages = [
             "Trợ lý đang biên tập...",
             "Hít vào... thở ra... đợi xíu nhé...",
+            "Đang pha một tách cà phê thơm lừng...",
             "Đang lục lọi kho từ vựng phong phú...",
             "Sắp xong rồi, đừng hối nha...",
             "Đang 'múa bút' tạo content xịn...",
@@ -302,6 +306,13 @@ const App: React.FC = () => {
     setSections([]);
   };
 
+  if (!isAuthenticated) {
+    return <LockScreen onSuccess={() => {
+      setIsAuthenticated(true);
+      localStorage.setItem('athena_auth_v2', 'HuongDiepp');
+    }} />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#a8c3d4] via-[#dbd6df] to-[#eec6c7]">
       {/* Header */}
@@ -313,15 +324,12 @@ const App: React.FC = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-[#334155] tracking-tight font-serif">Trợ lý biên tập</h1>
-              <p className="text-[10px] text-[#64748b] font-medium tracking-widest uppercase">Viết, biên tập, tối ưu nội dung nhanh đa nền tảng</p>
+              <p className="text-[10px] text-[#64748b] font-medium tracking-widest uppercase">Trợ lý nội dung đa năng</p>
             </div>
           </div>
           <div className="flex items-center space-x-2 bg-white/30 px-3 py-1.5 rounded-full border border-white/40">
-             <div className={`h-2 w-2 rounded-full ring-2 ring-white/60 ${import.meta.env.VITE_API_KEY ? 'bg-emerald-400' : 'bg-[#db88a4]'}`} />
-
-      <span className="text-xs text-[#64748b] font-medium">
-{import.meta.env.VITE_API_KEY ? 'System Ready' : 'Key Missing'}
-</span>
+             <div className={`h-2 w-2 rounded-full ring-2 ring-white/60 ${process.env.API_KEY ? 'bg-emerald-400' : 'bg-[#db88a4]'}`} />
+             <span className="text-xs text-[#64748b] font-medium">{process.env.API_KEY ? 'System Ready' : 'Key Missing'}</span>
           </div>
         </div>
       </header>
